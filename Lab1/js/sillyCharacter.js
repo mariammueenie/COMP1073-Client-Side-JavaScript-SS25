@@ -58,7 +58,17 @@ function randomInt(min, max) {
 // Function to generate a random character description
 function generateRandomCharacterDescription() {
   // Pools to pick random values from
-  const nameOptions  = ["Captain Waffles", "Dr. Noodle", "Sir Pancake", "Agent Pickles", "Queen Zucchini"];
+  // Name options referenced from: https://www.heroscapers.com/threads/funny-super-hero-names.3716/page-2
+   const nameOptions  = [
+    "Captain Waffles", "Dr. Noodle", "Sir Pancake", "Agent Pickles", "Queen Zucchini",
+    "Captain Cliff Beefpile", "Sledge Riprock", "Tank Concrete", "Bronc Drywall", "Stump Hugelarge",
+    "Chunk Pylon", "Chunk Man", "Captain Ron Codpiece", "Sledge Fisthammer", "Clint Stompheader",
+    "Captain Chuck Hardslab", "Chunk Ironchest", "Captain Obvious", "The Fry", "Running Commentary Man",
+    "The Nip", "Ms. Sogyny", "General Disarray", "Captain Chaos", "Lightbulb Man", "Sir. Smel Za Lot",
+    "Captain Underpants", "HypoAllergenic Woman", "Mx. Coco Nuts", "Jo Mama", "The Incr-Edible Egghead",
+    "Cowboy Boy", "CowGirl Girl", "Incredible Violence", "The Red Scare", "The Pink Scare", "The Bear",
+    "Wonder Bread", "Princess Prince", "Queen King", "Dr. Clobber-Octopus"
+  ];
   const foodOptions  = ["pizza", "sushi", "tacos", "poutine", "ramen"];
   const powerOptions = ["fly faster than light", "turn invisible", "shoot rainbow lasers", "teleport", "freeze time"];
 
