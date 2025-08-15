@@ -38,7 +38,7 @@ display the character's attributes in a creative and humorous way.
 let characterName = "Captain Waffle"; 
 let age = 21;
 let isSuperhero = true;
-let specialPowers = ["flying", "talking to squirrels", "able to smell pizza from abnormally long distances"];
+let specialPowers = ["flying", "talking to squirrels", "ability to smell pizza from abnormally long distances"];
 let favoriteFood = "pizza";
 
 // Grab DOM elements we will manipulate
@@ -94,17 +94,17 @@ function generateRandomCharacterDescription() {
     ];
   
     const powerOptions = [
-        "fly faster than light", "turn invisible", "shoot rainbow lasers", "teleport", "freeze time",
-        "ability to change the television channel with a click of the fingers",
+        "flying faster than light", "turning invisible", "shooting rainbow lasers out of a body part of choice", "teleportation", "freezing time",
+        "the ability to change the television channel with a click of the fingers",
         "instant dish washing",
-        "ability to build a perfect lego replica of any building or object",
+        "the ability to build a perfect lego replica of any building or object",
         "perfect hair",
-        "can always find the nearest gas station",
+        "always knowing where the nearest gas station is",
         "always knowing the number of beans in a jar",
         "never getting drunk",
         "the ability to read heavy metal album covers, no matter how spiky the logo",
         "always having 20 bucks in their pocket",
-        "always the second hottest person in the room",
+        "always being the second hottest person in the room",
         "shapeshifting (but specifically in ways that are small and barely noticeable)",
         "unscrambling eggs",
         "never missing the wastebasket on a three-point paper-ball free throw",
@@ -118,7 +118,7 @@ function generateRandomCharacterDescription() {
         "the ability to hail a taxi in less than a minute (in any situation)",
         "the ability to instill in a person within line of eyesight the intense need to urinate",
         "surviving anything ONCE",
-        "can remember anything forever as long as they say it three times"
+        "the ability to remember anything forever as long as they say it three times"
     ];
 
   // Random name, food, and boolean superhero status
