@@ -10,11 +10,21 @@
 
     <!-- Description. -->
     <p id="characterDescription"></p>
-    <p></p>
+    
+    <!-- Generate Button (No Personalizations) -->
+     <div>
+        <label for="generateButton">Generate a Silly Superhero :</label>
+         <button id="generateButton">Generate New </button>
+     </div>
+
+     <!-- Personalize Silly Character 'Menu' -->
+      <div>
+        <h3> Personalize your Silly Superhero Below</h3>
+      </div>
 
     <!-- Name customization. -->
      <div>
-        <label for="nameInput">New Name:</label>
+        <label for="nameInput">Name:</label>
         <input id="nameInput" type="text" placeholder="Enter your own name">
         <button id="updateNameButton">Personalize Name</button>
      </div>
@@ -22,12 +32,11 @@
      <!-- Age customization. -->
       <div>
         <label for="ageInput">Age:</label>
-        <input id="ageInput" type="number" value="0" min="0" placeholder="For example; 21">
+        <input id="ageInput" type="number" min="0" placeholder="Enter your own age">
         <button id="updateAgeButton">Personalize Age</button>
       </div>
 
-      <!-- Buttons! -->
-    <button id="generateButton">Generate Random Character</button>
+      <!-- Personalization Buttons! -->
     <button id="increaseAgeButton">Increase Age +</button>
     <button id="decreaseAgeButton">Decrease Age -</button>
 
