@@ -166,6 +166,17 @@ function decreaseAge() {
   updateCharacterDescription();
 }
 
+// Function to update the character's name from input
+function setNameFromInput() {
+    const newName = nameInput.value.trim();
+    if (newName !== "") {
+        characterName = newName;
+        updateCharacterDescription();
+    }
+}
+document.querySelector('#updateNameButton')
+.addEventListener('click', setNameFromInput);
+
 // Function to update the character's description after changing
 function updateCharacterDescription() {
   // Create a description string using template literals
@@ -180,6 +191,7 @@ generateButton.addEventListener("click", generateRandomCharacterDescription);
 updateAgeButton.addEventListener("click", setAgeFromInput);
 increaseAgeButton.addEventListener("click", increaseAge);
 decreaseAgeButton.addEventListener("click", decreaseAge);
+
 
 // Show initial description on page load
 updateCharacterDescription();
