@@ -52,25 +52,74 @@ const decreaseAgeButton = document.querySelector("#decreaseAgeButton");
 
 // Utility function to generate a random integer between min and max
 function randomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 // Function to generate a random character description
 function generateRandomCharacterDescription() {
-  // Pools to pick random values from
-  // Name options referenced from: https://www.heroscapers.com/threads/funny-super-hero-names.3716/page-2
-   const nameOptions  = [
-    "Captain Waffles", "Dr. Noodle", "Sir Pancake", "Agent Pickles", "Queen Zucchini",
-    "Captain Cliff Beefpile", "Sledge Riprock", "Tank Concrete", "Bronc Drywall", "Stump Hugelarge",
-    "Chunk Pylon", "Chunk Man", "Captain Ron Codpiece", "Sledge Fisthammer", "Clint Stompheader",
-    "Captain Chuck Hardslab", "Chunk Ironchest", "Captain Obvious", "The Fry", "Running Commentary Man",
-    "The Nip", "Ms. Sogyny", "General Disarray", "Captain Chaos", "Lightbulb Man", "Sir. Smel Za Lot",
-    "Captain Underpants", "HypoAllergenic Woman", "Mx. Coco Nuts", "Jo Mama", "The Incr-Edible Egghead",
-    "Cowboy Boy", "CowGirl Girl", "Incredible Violence", "The Red Scare", "The Pink Scare", "The Bear",
-    "Wonder Bread", "Princess Prince", "Queen King", "Dr. Clobber-Octopus"
-  ];
-  const foodOptions  = ["pizza", "sushi", "tacos", "poutine", "ramen"];
-  const powerOptions = ["fly faster than light", "turn invisible", "shoot rainbow lasers", "teleport", "freeze time"];
+    // Pools to pick random values from
+    // Name options referenced from: https://www.heroscapers.com/threads/funny-super-hero-names.3716/page-2
+    const nameOptions  = [
+        "Captain Waffles", "Dr. Noodle", "Sir Pancake", "Agent Pickles", "Queen Zucchini",
+        "Captain Cliff Beefpile", "Sledge Riprock", "Tank Concrete", "Bronc Drywall", "Stump Hugelarge",
+        "Chunk Pylon", "Chunk Man", "Captain Ron Codpiece", "Sledge Fisthammer", "Clint Stompheader",
+        "Captain Chuck Hardslab", "Chunk Ironchest", "Captain Obvious", "The Fry", "Running Commentary Man",
+        "The Nip", "Ms. Sogyny", "General Disarray", "Captain Chaos", "Lightbulb Man", "Sir. Smel Za Lot",
+        "Captain Underpants", "HypoAllergenic Woman", "Mx. Coco Nuts", "Jo Mama", "The Incr-Edible Egghead",
+        "Cowboy Boy", "CowGirl Girl", "Incredible Violence", "The Red Scare", "The Pink Scare", "The Bear",
+        "Wonder Bread", "Princess Prince", "Queen King", "Dr. Clobber-Octopus"
+    ];
+
+    // referenced from: https://www.listchallenges.com/100-random-foods/list/3
+    const foodOptions  = [
+        "Avocado", "Watercress Sandwich", "Flan", "Calamari", "Raspberry Lemon Meringue Pie",
+        "Baked Potato Soup", "Oysters Rockefeller", "Sticky Toffee Pudding", "Chicken Fried Steak", "Cinnamon Bread",
+        "Maple Bacon Doughnut", "Bagel and Lox", "Persimmon", "Eggplant", "Udon", "Hibiscus Tea", "Cactus Fries",
+        "Pomelo", "Jumbalaya", "Chicken Noodle Soup", "Pho", "Black Forest Cake", "Butter Chicken",
+        "Philly Cheese Steak", "Fettucini Alfredo", "Spaghetti Squash", "Frittata", "Masala Dosa", "Eel",
+        "Profiteroles", "Escargots", "Cream Cheese Frosting", "Pineapple", "Zucchini Flowers",
+        "Arugula Blackberry Salad", "Dragonfruit", "Carbonara", "Chia Pudding", "Mango Lassi", "Corned Beef Sandwich",
+        "BLT", "Bubble Tea", "Chocolate Raspberry Brownies", "Clam Cakes", "Lamb Chops", "Smith Island Cake",
+        "Cheese Stuffed Jalapenos", "Alligator", "Mexican Street Corn", "Chow Mein", "Corn Chowder",
+        "Peanut Butter, Banana, and Bacon - Tennessee", "Coconut Cream Pie", "Huevos Rancheros", "Banh Mi", "Empanada",
+        "Vindaloo", "Vanilla Pudding", "Blue Moon Ice Cream", "Blueberry Pineapple Smoothie", "Elk",
+        "Eggplant Parmesan", "Swedish Meatballs", "Squared Watermelon", "Fig Jam", "Octopus", "Bone Marrow",
+        "Gallo Pinto", "Crab Rangoon", "Crêpe Suzette", "Pico De Gallo", "Salmon Pasta Bake", "Cucumber Sandwiches",
+        "Caramel Latte", "Lemon Chicken", "Saltine Crackers", "Ants on a Log", "English Breakfast",
+        "Chorizo Pizza", "Chicken Waffle", "Sausage, Peppers and Onions on a Hoagie", "Fried Green Tomatoes",
+        "Cassoulet", "Blueberry Cream Cheese French Toast Casserole", "Snickerdoodles", "Dutch Baby Pancake",
+        "Roast Turkey and Stuffing", "Rueben Sandwich", "Lemon Cookies", "Strawberry Rhubarb Pie",
+        "Bacon Wrapped Pineapple", "Marzipan Dates", "Pistachio Muffin", "Spaghetti Bolognese", "Sugar Cane",
+        "Potato Cake", "Garlic Knots", "Gazpacho", "Huckleberry Ice Cream", "Gulab Jamun"
+    ];
+  
+    const powerOptions = [
+        "fly faster than light", "turn invisible", "shoot rainbow lasers", "teleport", "freeze time",
+        "ability to change the television channel with a click of the fingers",
+        "instant dish washing",
+        "ability to build a perfect lego replica of any building or object",
+        "perfect hair",
+        "can always find the nearest gas station",
+        "always knowing the number of beans in a jar",
+        "never getting drunk",
+        "the ability to read heavy metal album covers, no matter how spiky the logo",
+        "always having 20 bucks in their pocket",
+        "always the second hottest person in the room",
+        "shapeshifting (but specifically in ways that are small and barely noticeable)",
+        "unscrambling eggs",
+        "never missing the wastebasket on a three-point paper-ball free throw",
+        "flawlessly juggling any number of anything no matter how ludicrous or unlikely",
+        "making lemonade out of things that are not lemons",
+        "opening any jar on the first go",
+        "always rolling a 6 (even on a dice with no 6 on it)",
+        "total sunburn immunity",
+        "total spice immunity",
+        "total freezeburn immunity",
+        "the ability to hail a taxi in less than a minute (in any situation)",
+        "the ability to instill in a person within line of eyesight the intense need to urinate",
+        "surviving anything ONCE",
+        "can remember anything forever as long as they say it three times"
+    ];
 
   // Random name, food, and boolean superhero status
   characterName = nameOptions[randomInt(0, nameOptions.length - 1)];
@@ -120,7 +169,7 @@ function decreaseAge() {
 // Function to update the character's description after changing
 function updateCharacterDescription() {
   // Create a description string using template literals
-  const description = `${characterName} is a ${age}-year-old ${isSuperhero ? "superhero" : "ordinary person"} who loves ${favoriteFood}. Their special powers include: ${specialPowers.join(", ")}.`;
+  const description = `${characterName} is a ${age}-year-old ${isSuperhero ? "superhero" : "ordinary person"} who loves eating ONLY ${favoriteFood}. Their special powers include: ${specialPowers.join(", ")}.`;
 
   // Update the description element in the DOM
   descriptionEl.textContent = description;
