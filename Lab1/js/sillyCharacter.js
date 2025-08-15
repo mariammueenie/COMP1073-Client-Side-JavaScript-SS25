@@ -6,7 +6,9 @@ funny character with attributes like name, age, favorite food, and special power
 The user can also customize some aspects like updating the character's name or age.
 
 Project Breakdown:
-Declare, Initialize, and Update Variables:
+1.Declare
+2.Initialize
+3.Update Variables:
 
 You’ll create variables to store different character attributes 
 (name, age, favorite food, etc.).
@@ -33,19 +35,93 @@ display the character's attributes in a creative and humorous way.
 */
 
 // Declare and initialize variables
+let characterName = "Captain Waffle"; 
+let age = 21;
+let isSuperhero = true;
+let specialPowers = ["flying", "talking to squirrels", "able to smell pizza from abnormally long distances"];
+let favoriteFood = "pizza";
 
+// Grab DOM elements we will manipulate
+const descriptionEl = document.querySelector("#characterDescription");
+const nameInput = document.querySelector("#nameInput");
+const ageInput = document.querySelector("#ageInput");
+const generateButton = document.querySelector("#generateButton");
+const updateAgeButton = document.querySelector("#updateAgeButton");
+const increaseAgeButton = document.querySelector("#increaseAgeButton");
+const decreaseAgeButton = document.querySelector("#decreaseAgeButton");
 
+// Utility function to generate a random integer between min and max
+function randomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 // Function to generate a random character description
+function generateRandomCharacterDescription() {
+  // Pools to pick random values from
+  const nameOptions  = ["Captain Waffles", "Dr. Noodle", "Sir Pancake", "Agent Pickles", "Queen Zucchini"];
+  const foodOptions  = ["pizza", "sushi", "tacos", "poutine", "ramen"];
+  const powerOptions = ["fly faster than light", "turn invisible", "shoot rainbow lasers", "teleport", "freeze time"];
 
+  // Random name, food, and boolean superhero status
+  characterName = nameOptions[randomInt(0, nameOptions.length - 1)];
+  favoriteFood = foodOptions[randomInt(0, foodOptions.length - 1)];
+  isSuperhero = randomInt(0, 1) === 1; 
+
+  // Random age between 1 and 111
+  age = randomInt(1, 111);
+
+  // Choose 1–3 random powers from the powerOptions array without duplicates
+  const count = randomInt(1, 3);
+  const poolCopy = powerOptions.slice();
+  specialPowers = []; 
+  for (let i = 0; i < count; i++) {
+    const pickIndex = randomInt(0, poolCopy.length - 1);
+    specialPowers.push(poolCopy[pickIndex]);
+    poolCopy.splice(pickIndex, 1);
+  }
+
+  // Update the screen with new variables
+  updateCharacterDescription();
+}
 
 // Functions to update character's age
+function setAgeFromInput() {
+  const parsed = +ageInput.value;
+  if (!isNaN(parsed) && parsed >= 0) {
+    age = parsed;
+    updateCharacterDescription();
+  }
+}
 
+// Function to increase age by 1
+function increaseAge() {
+  age = age + 1;
+  updateCharacterDescription();
+}
 
+// Function to decrease age by 1
+function decreaseAge() {
+  if (age > 0) {
+    age = age - 1;
+  }
+  updateCharacterDescription();
+}
 
+// Function to update the character's description after changing
+function updateCharacterDescription() {
+  // Create a description string using template literals
+  const description = `${characterName} is a ${age}-year-old ${isSuperhero ? "superhero" : "ordinary person"} who loves ${favoriteFood}. Their special powers include: ${specialPowers.join(", ")}.`;
 
-// Function to update the character's description after changing age
-
+  // Update the description element in the DOM
+  descriptionEl.textContent = description;
+}
 
 // Add event listeners for buttons using querySelector
+generateButton.addEventListener("click", generateRandomCharacterDescription);
+updateAgeButton.addEventListener("click", setAgeFromInput);
+increaseAgeButton.addEventListener("click", increaseAge);
+decreaseAgeButton.addEventListener("click", decreaseAge);
+
+// Show initial description on page load
+updateCharacterDescription();
 
