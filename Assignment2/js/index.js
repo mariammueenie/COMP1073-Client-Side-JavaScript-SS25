@@ -18,6 +18,19 @@
 // Add event listener to form submission
 
 // Render smoothie with user selections and display
+// =================================
+
+
+// Smoothie class with properties for each ingredient category
+class Smoothie {
+    constructor(liquid, fruit, greens, booster, protein) {
+        this.liquid = liquid;
+        this.fruit = fruits;
+        this.greens = greens;
+        this.booster = booster;
+        this.protein = protein;
+    }
+}
 
 
 
