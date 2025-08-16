@@ -54,7 +54,7 @@ class Smoothie {
 
 
 // Method to display smoothie ingredients chosen by user
-describe() {
+describe();{
     const fruitList = this.fruit.length > 0 ? this.fruit.join(', ') : 'none';
     const greensList = this.greens.length > 0 ? this.greens.join(', ') : 'none';
     
@@ -66,7 +66,28 @@ describe() {
         Protein: ${this.protein || 'none'}`;
 }
 
+// Event listener for form submission
+document.addEventListener('DOMContentLoaded', ()=> {
+    const form = document.getElementById('smoothieForm');
+    const summaryEI = document.getElementById('orderSummary');
 
+    form.addEventListener('submit', (event)=> {
+        event.preventDefault();
+
+        // Get user selections  
+        const liquid = document.querySelector('input[name="liquid"]:checked')?.value || '';
+        const fruit = Array.from(document.querySelectorAll('input[name="fruit"]:checked')).map((el)=>el.value);
+        const greens = Array.from(document.querySelectorAll('input[name="greens"]:checked')).map((el)=>el.value);
+        const booster = document.querySelector('input[name="booster"]:checked')?.value || '';
+        const protein = document.querySelector('input[name="protein"]:checked')?.value || '';
+
+        // Create smoothie object with user selections
+        const smoothie = new Smoothie(liquid, fruit, greens, booster, protein);
+
+        // Display smoothie summary
+        summaryEI.textContent = smoothie.describe();
+    });
+}); 
 
 
 
