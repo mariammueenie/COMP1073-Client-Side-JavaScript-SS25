@@ -1,14 +1,23 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <title>The Smoothie Machine</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Smoothie Menu ideas referenced from the following:
+   https://www.nomeatathlete.com/the-perfect-smoothie-formula/
+   https://simplegreensmoothies.com/smoothie-formula/
+   https://tasty-yummies.com/the-perfect-green-smoothie-formula/ -->
+
   <style>
     /* insert css page at some point */
   </style>
 </head>
+
+<script src="js/index.js"></script>
 <body>
   <h1>The Smoothie Machine</h1>
 
@@ -95,31 +104,5 @@
 
     <button type="submit">Generate Smoothie</button>
   </form>
-
-  <script>
-    // Limit checkbox selections for fruits (max 3) and greens (max 2)
-    function limitCheckboxes(groupSelector, max, message) {
-      const boxes = Array.from(document.querySelectorAll(groupSelector));
-      boxes.forEach(box => {
-        box.addEventListener('change', () => {
-          const checkedCount = boxes.filter(b => b.checked).length;
-          if (checkedCount > max) {
-            box.checked = false;
-            alert(message);
-          }
-        });
-      });
-    }
-
-    limitCheckboxes('fieldset.fruit input[type="checkbox"]', 3, 'You can choose up to 3 fruits/flavours.');
-    limitCheckboxes('fieldset.greens input[type="checkbox"]', 2, 'You can choose up to 2 greens.');
-
-    // Optional: prevent actual submission so you can test selection easily
-    // Remove this listener if you want a real submit.
-    document.getElementById('smoothieForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      alert('Smoothie order generated! (Form prevented from submitting for demo.)');
-    });
-  </script>
 </body>
 </html>
