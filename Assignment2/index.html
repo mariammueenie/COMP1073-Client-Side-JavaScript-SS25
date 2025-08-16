@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>The Smoothie Machine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* insert css page at some point */
+  </style>
+</head>
+<body>
+  <h1>The Smoothie Machine</h1>
+
+  <form id="smoothieForm" action="#" method="post">
+    <!-- Choose a Smoothie Liquid (single choice only) -->
+    <fieldset>
+      <legend>Choose a Liquid</legend>
+      <div class="row">
+        <label><input type="radio" name="liquid" value="vanilla yogurt" required> Vanilla yogurt</label>
+        <label><input type="radio" name="liquid" value="2% milk"> 2% Milk</label>
+        <label><input type="radio" name="liquid" value="1% milk"> 1% Milk</label>
+        <label><input type="radio" name="liquid" value="almond milk"> Almond Milk</label>
+        <label><input type="radio" name="liquid" value="cashew milk"> Cashew Milk</label>
+        <label><input type="radio" name="liquid" value="coconut water"> Coconut Water</label>
+        <label><input type="radio" name="liquid" value="water + ice"> Water + Ice</label>
+      </div>
+    </fieldset>
+
+    <!-- Fruit + Flavour (can choose up to 3 total, includes +$ more expensive items) -->
+    <fieldset class="fruit">
+      <legend>Fruit + Flavour <span class="hint">(choose up to 3)</span></legend>
+      <div class="row">
+        <label><input type="checkbox" name="fruit" value="strawberry"> Strawberry</label>
+        <label><input type="checkbox" name="fruit" value="blueberry"> Blueberry</label>
+        <label><input type="checkbox" name="fruit" value="blackberry"> Blackberry</label>
+        <label><input type="checkbox" name="fruit" value="raspberry"> Raspberry</label>
+        <label><input type="checkbox" name="fruit" value="peach"> Peach</label>
+        <label><input type="checkbox" name="fruit" value="mango"> Mango</label>
+        <label><input type="checkbox" name="fruit" value="kiwi"> Kiwi</label>
+        <label><input type="checkbox" name="fruit" value="banana"> Banana</label>
+        <label><input type="checkbox" name="fruit" value="orange"> Orange</label>
+        <label><input type="checkbox" name="fruit" value="pear"> Pear</label>
+        <label><input type="checkbox" name="fruit" value="pineapple"> Pineapple</label>
+        <label><input type="checkbox" name="fruit" value="grape"> Grape</label>
+        <!-- Items that cost more -->
+        <label><input type="checkbox" name="fruit" value="acai berry (+$)"> Acai Berry <strong>+$</strong></label>
+        <label><input type="checkbox" name="fruit" value="passion fruit (+$)"> Passion Fruit <strong>+$</strong></label>
+      </div>
+    </fieldset>
+
+    <!-- Nutritious Greens (optional, up to 2) -->
+    <fieldset class="greens">
+      <legend>Nutritious Greens <span class="hint">(optional, up to 2)</span></legend>
+      <div class="row">
+        <label><input type="checkbox" name="greens" value="spinach"> Spinach</label>
+        <label><input type="checkbox" name="greens" value="kale"> Kale</label>
+        <label><input type="checkbox" name="greens" value="bok choy"> Bok Choy</label>
+        <label><input type="checkbox" name="greens" value="collards"> Collards</label>
+        <label><input type="checkbox" name="greens" value="microgreens"> Micro-greens</label>
+        <label><input type="checkbox" name="greens" value="dandelion"> Dandelion</label>
+        <label><input type="checkbox" name="greens" value="celery"> Celery</label>
+        <label><input type="checkbox" name="greens" value="cucumber"> Cucumber</label>
+      </div>
+    </fieldset>
+
+    <!-- Super-foods and Flavour Boosters (choose 1, optional) -->
+    <fieldset>
+      <legend>Super-foods and Flavour Boosters <span class="hint">(choose 1, optional)</span></legend>
+      <div class="row">
+        <label><input type="radio" name="booster" value="" checked> None</label>
+        <label><input type="radio" name="booster" value="chia seeds"> Chia seeds</label>
+        <label><input type="radio" name="booster" value="spirullina"> Spirullina</label>
+        <label><input type="radio" name="booster" value="fresh ginger"> Fresh ginger</label>
+        <label><input type="radio" name="booster" value="hemp seed"> Hemp seed</label>
+        <label><input type="radio" name="booster" value="cacao nib"> Cacao Nibs</label>
+        <label><input type="radio" name="booster" value="vanilla bean extract"> Vanilla Bean Extract</label>
+        <label><input type="radio" name="booster" value="shredded coconut"> Shredded Coconut</label>
+      </div>
+    </fieldset>
+
+    <!-- Protein (choose 1, optional) -->
+    <fieldset>
+      <legend>Protein <span class="hint">(optional, choose 1)</span></legend>
+      <div class="row">
+        <label><input type="radio" name="protein" value="" checked> None</label>
+        <label><input type="radio" name="protein" value="hemp protein powder"> Hemp Protein Powder</label>
+        <label><input type="radio" name="protein" value="whey protein powder"> Whey Protein Powder</label>
+        <label><input type="radio" name="protein" value="hemp seeds"> Hemp Seeds</label>
+        <label><input type="radio" name="protein" value="grass-fed gelatin"> Grass-Fed Gelatin</label>
+        <label><input type="radio" name="protein" value="blitzed almonds"> Blitzed Almonds</label>
+        <label><input type="radio" name="protein" value="cashew cream"> Cashew Cream</label>
+      </div>
+    </fieldset>
+
+    <button type="submit">Generate Smoothie</button>
+  </form>
+
+  <script>
+    // Limit checkbox selections for fruits (max 3) and greens (max 2)
+    function limitCheckboxes(groupSelector, max, message) {
+      const boxes = Array.from(document.querySelectorAll(groupSelector));
+      boxes.forEach(box => {
+        box.addEventListener('change', () => {
+          const checkedCount = boxes.filter(b => b.checked).length;
+          if (checkedCount > max) {
+            box.checked = false;
+            alert(message);
+          }
+        });
+      });
+    }
+
+    limitCheckboxes('fieldset.fruit input[type="checkbox"]', 3, 'You can choose up to 3 fruits/flavours.');
+    limitCheckboxes('fieldset.greens input[type="checkbox"]', 2, 'You can choose up to 2 greens.');
+
+    // Optional: prevent actual submission so you can test selection easily
+    // Remove this listener if you want a real submit.
+    document.getElementById('smoothieForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Smoothie order generated! (Form prevented from submitting for demo.)');
+    });
+  </script>
+</body>
+</html>
