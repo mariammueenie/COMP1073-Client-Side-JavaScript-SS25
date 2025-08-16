@@ -40,21 +40,31 @@ limitCheckboxGroup('#fruitFieldset input[type="checkbox"]', 3, "You can choose u
 // Limit greens selections to 2
  limitCheckboxGroup('#greensFieldset input[type="checkbox"]', 2, "You can choose up to 2 greens.");
 
-
-
-
-
 // Smoothie class with properties for each ingredient category
 class Smoothie {
     constructor(liquid, fruit, greens, booster, protein) {
         this.liquid = liquid;
-        this.fruit = fruits;
+        this.fruit = fruit;
         this.greens = greens;
         this.booster = booster;
         this.protein = protein;
     }
 }
 
+
+
+// Method to display smoothie ingredients chosen by user
+describe() {
+    const fruitList = this.fruit.length > 0 ? this.fruit.join(', ') : 'none';
+    const greensList = this.greens.length > 0 ? this.greens.join(', ') : 'none';
+    
+    return `Your smoothie contains:
+        Liquid: ${this.liquid || 'none'}
+        Fruits/Flavours: ${fruitList}
+        Greens: ${greensList}
+        Super-foods/Flavour Boosters: ${this.booster || 'none'}
+        Protein: ${this.protein || 'none'}`;
+}
 
 
 
